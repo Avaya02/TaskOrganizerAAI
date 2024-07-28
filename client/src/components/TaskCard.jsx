@@ -54,24 +54,24 @@ const TaskCard = ({ task }) => {
           </span>
         </>
 
-        <div className='w-full border-t border-gray-200 my-2' />
+        {/* <div className='w-full border-t border-gray-200 my-2' /> */}
         <div className='flex items-center justify-between mb-2'>
           <div className='flex items-center gap-3'>
-            <div className='flex gap-1 items-center text-sm text-gray-600'>
+            {/* <div className='flex gap-1 items-center text-sm text-gray-600'>
               <BiMessageAltDetail />
               <span>{task?.activities?.length}</span>
-            </div>
-            <div className='flex gap-1 items-center text-sm text-gray-600 '>
+            </div> */}
+            {/* <div className='flex gap-1 items-center text-sm text-gray-600 '>
               <MdAttachFile />
               <span>{task?.assets?.length}</span>
-            </div>
-            <div className='flex gap-1 items-center text-sm text-gray-600 '>
+            </div> */}
+            {/* <div className='flex gap-1 items-center text-sm text-gray-600 '>
               <FaList />
               <span>0/{task?.subTasks?.length}</span>
-            </div>
+            </div> */}
           </div>
 
-          <div className='flex flex-row-reverse'>
+          {/* <div className='flex flex-row-reverse'>
             {task?.team?.map((m, index) => (
               <div
                 key={index}
@@ -83,7 +83,7 @@ const TaskCard = ({ task }) => {
                 <UserInfo user={m} />
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
 
         {/* sub tasks */}
