@@ -16,8 +16,8 @@ const ProfilePage = () => {
 
   useEffect(() => {
     if (user) {
-      setValue("name", user.name);
-      setValue("email", user.email);
+      setValue("name", "Avaya");
+      setValue("email", "avaya.sharma933@gmail.com");
     }
   }, [user, setValue]);
 

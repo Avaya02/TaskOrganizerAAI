@@ -1,36 +1,13 @@
 import { Popover, Transition } from "@headlessui/react";
-import React, { Fragment, useState, useEffect } from "react";
-import axios from "axios";
+import React, { Fragment } from "react";
 import { getInitials } from "../utils";
 
-const UserInfo = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/api/user/dashboard', { withCredentials: true });
-        setUser(response.data);
-      } catch (error) {
-        setError(error.response?.data?.message || "Failed to fetch user information.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserInfo();
-  }, []);
-
-  if (loading) return <div className="text-center">Loading...</div>;
-  if (error) return <div className="text-center text-red-500">{error}</div>;
-
+const UserInfo = ({ user }) => {
   return (
     <div className="px-4">
       <Popover className="relative">
         <Popover.Button className="group inline-flex items-center outline-none">
-          <span className="text-xl font-bold text-blue-600">
+          <span className="text-xl font-bold text-black">
             {getInitials(user?.name)}
           </span>
         </Popover.Button>
