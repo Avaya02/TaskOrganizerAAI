@@ -25,15 +25,15 @@ const Signup = () => {
   const submitHandler = async (data) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/user/signup',
-        { name: data.name, email: data.email, password: data.password },
+        'http://localhost:5000/api/user/register',
+        { name: data.name, email: data.email, password: data.password, role: undefined, title: undefined, isAdmin: true },
         { withCredentials: true }
       );
 
       console.log(response.data);
       if (response.data.user) {
         // Save the token in localStorage or sessionStorage
-        navigate('/dashboard');
+        navigate('/log-in');
       }
     } catch (error) {
       console.log(error);
@@ -64,7 +64,7 @@ const Signup = () => {
         {/* right side */}
         <div className="w-full md:w-1/3 p-4 md:p-1 flex flex-col justify-center items-center">
           <form
-            // onSubmit={handleSubmit(submitHandler)}
+            onSubmit={handleSubmit(submitHandler)}
             className="form-container w-full md:w-[400px] flex flex-col gap-y-8 bg-white px-10 pt-14 pb-14"
           >
             <div className="">

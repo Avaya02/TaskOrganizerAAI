@@ -8,7 +8,7 @@ import { user } from "../../client/src/assets/data.js";
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password, isAdmin, role, title } = req.body;
+    const { name, email, password ,role,title,isAdmin} = req.body;
 
     const userExist = await User.findOne({ email });
 
@@ -25,7 +25,7 @@ export const registerUser = async (req, res) => {
       password,
       isAdmin,
       role,
-      title,
+      title
     });
 
     if (user) {
