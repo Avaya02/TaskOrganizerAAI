@@ -24,16 +24,21 @@ function Layout() {
   const { user } = useSelector((state) => state.auth);
   const location = useLocation();
 
+  // Check if the current route is '/register'
+  const isRegisterPage = location.pathname === "/register";
+
   return user ? (
     <div className="w-full h-screen flex flex-col md:flex-row">
-      <div className="w-1/5 h-screen bg-white sticky top-0 hidden md:block">
-        <Sidebar />
-      </div>
+      {!isRegisterPage && ( // Render sidebar only if not on register page
+        <div className="w-1/5 h-screen bg-white sticky top-0 hidden md:block">
+          <Sidebar />
+        </div>
+      )}
 
-      <MobileSidebar />
+      {!isRegisterPage && <MobileSidebar />}
 
       <div className="flex-1 overflow-y-auto">
-        <Navbar />
+        {!isRegisterPage && <Navbar />}
 
         <div className="p-4 2xl:px-10">
           <Outlet />
@@ -49,49 +54,55 @@ const MobileSidebar = () => {
   const { isSidebarOpen } = useSelector((state) => state.auth);
   const mobileMenuRef = useRef(null);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const closeSidebar = () => {
     dispatch(setOpenSidebar(false));
   };
 
+  // Check if the current route is '/register'
+  const isRegisterPage = location.pathname === "/register";
+
   return (
     <>
-      <Transition
-        show={isSidebarOpen}
-        as={Fragment}
-        enter="transition-opacity duration-700"
-        enterFrom="opacity-x-10"
-        enterTo="opacity-x-100"
-        leave="transition-opacity duration-700"
-        leaveFrom="opacity-x-100"
-        leaveTo="opacity-x-0"
-      >
-        {(ref) => (
-          <div
-            ref={(node) => (mobileMenuRef.current = node)}
-            className={clsx(
-              "md:hidden w-full h-full bg-black/40 transition-all duration-700 transform ",
-              isSidebarOpen ? "translate-x-0" : "translate-x-full"
-            )}
-            onClick={() => closeSidebar()}
-          >
-            <div className="bg-white w-3/4 h-full">
-              <div className="w-full flex justify-end px-5 mt-5">
-                <button
-                  onClick={() => closeSidebar()}
-                  className="flex justify-end items-end"
-                >
-                  <IoClose size={25} />
-                </button>
-              </div>
+      {!isRegisterPage && ( // Render sidebar only if not on register page
+        <Transition
+          show={isSidebarOpen}
+          as={Fragment}
+          enter="transition-opacity duration-700"
+          enterFrom="opacity-x-10"
+          enterTo="opacity-x-100"
+          leave="transition-opacity duration-700"
+          leaveFrom="opacity-x-100"
+          leaveTo="opacity-x-0"
+        >
+          {(ref) => (
+            <div
+              ref={(node) => (mobileMenuRef.current = node)}
+              className={clsx(
+                "md:hidden w-full h-full bg-black/40 transition-all duration-700 transform ",
+                isSidebarOpen ? "translate-x-0" : "translate-x-full"
+              )}
+              onClick={() => closeSidebar()}
+            >
+              <div className="bg-white w-3/4 h-full">
+                <div className="w-full flex justify-end px-5 mt-5">
+                  <button
+                    onClick={() => closeSidebar()}
+                    className="flex justify-end items-end"
+                  >
+                    <IoClose size={25} />
+                  </button>
+                </div>
 
-              <div className="-mt-10">
-                <Sidebar />
+                <div className="-mt-10">
+                  <Sidebar />
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </Transition>
+          )}
+        </Transition>
+      )}
     </>
   );
 };
