@@ -18,6 +18,7 @@ import ProfilePage from "./pages/ProfilePage";
 import CompletedTasks from "./pages/CompletedTasks";
 import InProgressTasks from "./pages/InProgressTasks";
 import TodoTasks from "./pages/TodoTasks";
+import Register from "./pages/Register";
 
 function Layout() {
   const { user } = useSelector((state) => state.auth);
@@ -104,12 +105,13 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/tasks" element={<Tasks />} />
-          <Route path="/completed/:status" element={<CompletedTasks/>} />
+          <Route path="/completed/:status" element={<CompletedTasks />} />
           <Route path="/in-progress/:status" element={<InProgressTasks />} />
-          <Route path="/todo/:status" element={<TodoTasks/>} />
+          <Route path="/todo/:status" element={<TodoTasks />} />
           <Route path="/team" element={<Users />} />
           <Route path="/trashed" element={<Trash />} />
           <Route path="/task/:id" element={<TaskDetails />} />
+          <Route path="/register" element={<Register />} />
         </Route>
         <Route path="/log-in" element={<Login />} />
       </Routes>
