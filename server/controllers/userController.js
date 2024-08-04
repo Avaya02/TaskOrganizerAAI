@@ -8,7 +8,7 @@ import { user } from "../../client/src/assets/data.js";
 
 export const registerUser = async (req, res) => {
   try {
-    const { name, email, password ,role,title,isAdmin} = req.body;
+    const { name, email, password, role, title, isAdmin } = req.body;
 
     const userExist = await User.findOne({ email });
 
@@ -25,15 +25,18 @@ export const registerUser = async (req, res) => {
       password,
       isAdmin,
       role,
-      title
+      title,
     });
+
+    console.log(user);
+    
 
     if (user) {
       isAdmin ? createJWT(res, user._id) : null;
 
       user.password = undefined;
 
-      res.status(201).json(user);
+      res.status(201).json({user: user});
     } else {
       return res
         .status(400)
@@ -58,13 +61,10 @@ export const loginUser = async (req, res) => {
     }
 
     if (!user.isActive) {
-      return res
-        .status(401)
-        .json({
-          status: false,
-          message:
-            "User account has been deactivated, contact the administrator",
-        });
+      return res.status(401).json({
+        status: false,
+        message: "User account has been deactivated, contact the administrator",
+      });
     }
 
     const isMatch = await user.matchPassword(password);
@@ -92,7 +92,7 @@ export const loginUser = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    console.log("kya yaha par error h ?")
+    console.log("kya yaha par error h ?");
     return res.status(400).json({ status: false, message: error.message });
   }
 };
@@ -286,7 +286,7 @@ export const dashboardData = async (req, res) => {
 
     // Get all users
     const users = await User.find(); // Fetching all users
-    console.log('Anurag');
+    console.log("Anurag");
 
     return res.json({
       totalTasks,
@@ -309,14 +309,14 @@ export const dashboardData = async (req, res) => {
 //   try {
 //     const users = await User.find();
 //     console.log(users);
-  
+
 //     if(!users)
 //     {
 //       res.json({message: 'No Users found'})
 //     }
 
 //     return res.status(200).json({users})
-  
+
 //   } catch (error) {
 //     res.send(error)
 //   }
