@@ -13,7 +13,7 @@ const UserTable = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/user/get-team'); // Replace with your API endpoint
+        const response = await axios.get('https://taskorganizeraai.onrender.com/api/user/get-team'); // Replace with your API endpoint
         setUsers(response.data);
         setLoading(false);
       } catch (err) {

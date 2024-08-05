@@ -25,7 +25,7 @@ const Signup = () => {
   const submitHandler = async (data) => {
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/user/register',
+        'https://taskorganizeraai.onrender.com/api/user/register',
         { name: data.name, email: data.email, password: data.password, role: undefined, title: undefined, isAdmin: true },
         { withCredentials: true }
       );

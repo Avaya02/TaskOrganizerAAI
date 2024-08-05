@@ -23,7 +23,7 @@ const ProfilePage = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5000/api/user/update", {
+      const response = await axios.post("https://taskorganizeraai.onrender.com/api/user/update", {
         userId: user._id,
         ...data,
       });

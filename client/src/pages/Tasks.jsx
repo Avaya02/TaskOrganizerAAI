@@ -39,7 +39,7 @@ const Tasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/task/", { withCredentials: true });
+        const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/", { withCredentials: true });
 
         if (response.data.status) {
           setTasks(response.data.tasks);
@@ -59,7 +59,7 @@ const Tasks = () => {
 
   const handleTaskCreated = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/task/", { withCredentials: true });
+      const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/", { withCredentials: true });
       if (response.data.status) {
         setTasks(response.data.tasks);
       } else {

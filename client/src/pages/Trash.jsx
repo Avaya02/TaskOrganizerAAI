@@ -31,7 +31,7 @@ const Trash = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/task/', { withCredentials: true });
+        const response = await axios.get('https://taskorganizeraai.onrender.com/api/task/', { withCredentials: true });
         console.log(response.data.tasks);
         setTasks(response.data.tasks.filter(task => task.isTrashed)); // Adjust this line based on your API response structure
       } catch (error) {
@@ -73,25 +73,25 @@ const Trash = () => {
   const deleteRestoreHandler = async () => {
     try {
       if (type === "delete") {
-        await axios.delete(`http://localhost:5000/api/task/delete-restore/${selected}`, { 
+        await axios.delete(`https://taskorganizeraai.onrender.com/api/task/delete-restore/${selected}`, { 
           withCredentials: true, 
           params: { actionType: "delete" } 
         });
         setTasks(tasks.filter(task => task._id !== selected));
       } else if (type === "restore") {
-        await axios.delete(`http://localhost:5000/api/task/delete-restore/${selected}`, { 
+        await axios.delete(`https://taskorganizeraai.onrender.com/api/task/delete-restore/${selected}`, { 
           withCredentials: true, 
           params: { actionType: "restore" } 
         });
         setTasks(tasks.filter(task => task._id !== selected));
       } else if (type === "deleteAll") {
-        await axios.delete('http://localhost:5000/api/task/delete-restore', { 
+        await axios.delete('https://taskorganizeraai.onrender.com/api/task/delete-restore', { 
           withCredentials: true, 
           params: { actionType: "deleteAll" } 
         });
         setTasks([]);
       } else if (type === "restoreAll") {
-        await axios.delete('http://localhost:5000/api/task/delete-restore', { 
+        await axios.delete('https://taskorganizeraai.onrender.com/api/task/delete-restore', { 
           withCredentials: true, 
           params: { actionType: "restoreAll" } 
         });

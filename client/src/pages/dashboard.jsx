@@ -162,7 +162,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/task/dashboard", { withCredentials: true });
+        const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/dashboard", { withCredentials: true });
         console.log(response);
         if (response.data.status) {
           setSummary({

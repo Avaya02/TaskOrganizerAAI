@@ -15,7 +15,7 @@ const AddSubTask = ({ open, setOpen, id, onTaskUpdated }) => {
   const handleOnSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/task/create-subtask/${id}`,
+        `https://taskorganizeraai.onrender.com/api/task/create-subtask/${id}`,
         data,
         { withCredentials: true }
       );

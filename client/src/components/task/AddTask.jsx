@@ -34,7 +34,7 @@ const AddTask = ({ open, setOpen, onTaskCreated }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
+      const response = await axios.post('https://taskorganizeraai.onrender.com/api/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -62,7 +62,7 @@ const AddTask = ({ open, setOpen, onTaskCreated }) => {
   
       // Post the task data to the server
       const response = await axios.post(
-        'http://localhost:5000/api/task/create',
+        'https://taskorganizeraai.onrender.com/api/task/create',
         taskData,
         { withCredentials: true }
       );

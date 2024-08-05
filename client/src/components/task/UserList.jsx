@@ -16,7 +16,7 @@ const UserList = ({ setTeam, team }) => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/user/get-team'); // Adjust the endpoint as necessary
+        const response = await axios.get('https://taskorganizeraai.onrender.com/api/user/get-team'); // Adjust the endpoint as necessary
         setData(response.data);
         setLoading(false);
       } catch (err) {

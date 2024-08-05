@@ -35,7 +35,7 @@ const InProgressTasks = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/task/", {
+        const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/", {
           withCredentials: true,
         });
 
@@ -57,7 +57,7 @@ const InProgressTasks = () => {
 
   const handleTaskCreated = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/task/", {
+      const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/", {
         withCredentials: true,
       });
       if (response.data.status) {

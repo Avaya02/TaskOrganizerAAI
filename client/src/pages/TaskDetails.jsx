@@ -95,7 +95,7 @@ const TaskDetails = () => {
   useEffect(() => {
     const fetchTaskDetails = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/task/${id}`, { withCredentials: true });
+        const response = await axios.get(`https://taskorganizeraai.onrender.com/api/task/${id}`, { withCredentials: true });
         setTask(response.data.task);
       } catch (error) {
         toast.error("Failed to load task details.");
@@ -254,7 +254,7 @@ const Activities = ({ activity, id }) => {
     setIsLoading(true);
     try {
       // Implement the API call to submit the new activity
-      await axios.post(`http://localhost:5000/api/task/activity/${id}`, { type: selected, text }, { withCredentials: true });
+      await axios.post(`https://taskorganizeraai.onrender.com/api/task/activity/${id}`, { type: selected, text }, { withCredentials: true });
       toast.success("Activity added successfully.");
       setText(""); // Clear the text area after successful submission
     } catch (error) {

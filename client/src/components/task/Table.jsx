@@ -27,7 +27,7 @@ const Table = ({ tasks }) => {
   const deleteHandler = async () => {
     try {
       // Implement your delete request here
-      await axios.delete(`http://localhost:5000/api/task/${selectedTaskId}`);
+      await axios.delete(`https://taskorganizeraai.onrender.com/api/task/${selectedTaskId}`);
       toast.success("Task deleted successfully!");
       setOpenDialog(false);
       // Refresh tasks or update state here

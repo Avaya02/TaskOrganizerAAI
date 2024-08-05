@@ -26,7 +26,7 @@ const UserAvatar = () => {
 
   const logoutHandler = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/api/user/logout");
+      const response = await axios.post("https://taskorganizeraai.onrender.com/api/user/logout");
       console.log(response.data);
       if (!response.data.user) {
         navigate("/log-in");
@@ -54,7 +54,7 @@ const UserAvatar = () => {
       return;
     }
     try {
-      const response = await axios.post("http://localhost:5000/api/user/change-password", {
+      const response = await axios.post("https://taskorganizeraai.onrender.com/api/user/change-password", {
         userId: user._id,
         newPassword,
       });

@@ -33,7 +33,7 @@ const TaskDialog = ({ task }) => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/task/", { withCredentials: true });
+      const response = await axios.get("https://taskorganizeraai.onrender.com/api/task/", { withCredentials: true });
       setTasks(response.data);
       setLoading(false);
     } catch (error) {
@@ -50,7 +50,7 @@ const TaskDialog = ({ task }) => {
 
   const deleteHandler = async () => {
     try {
-      const res = await axios.delete(`http://localhost:5000/api/task/deleteTask/${task._id}`, { withCredentials: true });
+      const res = await axios.delete(`https://taskorganizeraai.onrender.com/api/task/deleteTask/${task._id}`, { withCredentials: true });
       if (res.data.success) {
         toast.success("Task deleted successfully.");
         setTaskDeleted(!taskDeleted); // Toggle taskDeleted state to trigger useEffect

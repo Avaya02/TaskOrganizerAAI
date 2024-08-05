@@ -22,7 +22,7 @@ const AddUser = ({ open, setOpen, userData }) => {
 
   const handleOnSubmit = async (data) => {
     try {
-      const response = axios.post("http://localhost:5000/api/user/register", {
+      const response = axios.post("https://taskorganizeraai.onrender.com/api/user/register", {
         name:data.name,
         email: data.email,
         password: data.password,
