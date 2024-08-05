@@ -30,7 +30,7 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000', // Replace with your front-end URL
+    origin: 'https://task-organizer-aai.vercel.app', // Replace with your front-end URL
     credentials: true // Allow cookies to be sent
 }));
 app.use(cookieParser());
